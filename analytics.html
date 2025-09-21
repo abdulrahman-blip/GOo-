@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analytics — SafarGo Vendors</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+<div class="container">
+  
+<div class="header">
+  <div class="brand"><img src="assets/logo.svg" class="logo" alt="SafarGo Vendors"></div>
+  <div class="top-actions">
+    <button class="icon-btn" title="Notifications">🔔</button>
+    <div class="user">vendor@safargo.app ▾</div>
+  </div>
+</div>
+<div class="nav">
+  <a id="#nav-dashboard" href="index.html">Dashboard</a>
+  <a id="#nav-packages" href="packages.html">Packages</a>
+  <a id="#nav-bookings" href="bookings.html">Bookings</a>
+  <a id="#nav-customers" href="customers.html">Customers</a>
+  <a id="#nav-analytics" href="analytics.html">Analytics</a>
+  <a id="#nav-messages" href="messages.html">Messages</a>
+  <a id="#nav-settings" href="settings.html">Settings</a>
+</div>
+
+  <script>setActive('#nav-analytics')</script>
+  <div class="grid">
+    <div class="card">
+      <strong>Monthly Revenue</strong>
+      <canvas id="chart-revenue" class="chart"></canvas>
+    </div>
+    <div class="card">
+      <strong>Bookings by Destination</strong>
+      <canvas id="chart-dest" class="chart"></canvas>
+    </div>
+  </div>
+  <div class="footer">Charts are vanilla JS on canvas — replace with your preferred library later.</div>
+</div>
+<script type="module">
+import { lineChart, barChart } from './assets/charts.js';
+const data = await loadData();
+lineChart(document.getElementById('chart-revenue'), data.analytics.monthly);
+barChart(document.getElementById('chart-dest'), data.analytics.destinations);
+</script>
+</body></html>

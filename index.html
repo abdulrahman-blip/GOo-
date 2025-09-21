@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard — SafarGo Vendors</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+<div class="container">
+  
+<div class="header">
+  <div class="brand"><img src="assets/logo.svg" class="logo" alt="SafarGo Vendors"></div>
+  <div class="top-actions">
+    <button class="icon-btn" title="Notifications">🔔</button>
+    <div class="user">vendor@safargo.app ▾</div>
+  </div>
+</div>
+<div class="nav">
+  <a id="#nav-dashboard" href="index.html">Dashboard</a>
+  <a id="#nav-packages" href="packages.html">Packages</a>
+  <a id="#nav-bookings" href="bookings.html">Bookings</a>
+  <a id="#nav-customers" href="customers.html">Customers</a>
+  <a id="#nav-analytics" href="analytics.html">Analytics</a>
+  <a id="#nav-messages" href="messages.html">Messages</a>
+  <a id="#nav-settings" href="settings.html">Settings</a>
+</div>
+
+  <script>setActive('#nav-dashboard')</script>
+  <div class="kpis">
+    <div class="kpi"><div class="title">Total Bookings</div><div class="value" id="kpi-bookings">—</div></div>
+    <div class="kpi"><div class="title">Total Revenue</div><div class="value" id="kpi-revenue">—</div></div>
+    <div class="kpi"><div class="title">Active Packages</div><div class="value" id="kpi-packages">—</div></div>
+    <div class="kpi"><div class="title">Pending Requests</div><div class="value" id="kpi-pending">—</div></div>
+  </div>
+
+  <div class="grid" style="margin-top:12px">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>Bookings Trend</strong><span class="badge">last 12 months</span>
+      </div>
+      <canvas id="chart-line" class="chart"></canvas>
+    </div>
+    <div class="card">
+      <strong>Top Packages</strong>
+      <table class="table" id="tbl-top"></table>
+    </div>
+  </div>
+
+  <div class="card">
+    <strong>Recent Bookings</strong>
+    <table class="table" id="tbl-recent">
+      <thead><tr><th>Customer</th><th>Package</th><th>Status</th><th>Date</th><th>Amount</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="footer">© 2025 SafarGo — Vendor Dashboard (MVP)</div>
+</div>
+<script type="module">
+import { lineChart } from './assets/charts.js';
+const data = await loadData();
+document.getElementById('kpi-bookings').textContent = data.kpis.bookings;
+document.getElementById('kpi-revenue').textContent = '$' + data.kpis.revenue.toLocaleString();
+document.getElementById('kpi-packages').textContent = data.kpis.active_packages;
+document.getElementById('kpi-pending').textContent = data.kpis.pending;
+lineChart(document.getElementById('chart-line'), data.analytics.monthly);
+const top = data.packages.slice(0,3);
+const tblTop = document.getElementById('tbl-top');
+tblTop.innerHTML = '<tr><th>Package</th><th>City</th><th>Price</th><th>Status</th></tr>' + top.map(p=>`<tr><td>${p.name}</td><td>${p.city}</td><td>$${p.price}</td><td><span class="tag">${p.status}</span></td></tr>`).join('');
+const tbody = document.querySelector('#tbl-recent tbody');
+tbody.innerHTML = data.bookings_recent.map(b=>`<tr><td>${b.customer}</td><td>${b.package}</td><td><span class="tag">${b.status}</span></td><td>${b.date}</td><td>$${b.amount}</td></tr>`).join('');
+</script>
+</body></html>

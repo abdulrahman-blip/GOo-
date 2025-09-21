@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bookings — SafarGo Vendors</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+<div class="container">
+  
+<div class="header">
+  <div class="brand"><img src="assets/logo.svg" class="logo" alt="SafarGo Vendors"></div>
+  <div class="top-actions">
+    <button class="icon-btn" title="Notifications">🔔</button>
+    <div class="user">vendor@safargo.app ▾</div>
+  </div>
+</div>
+<div class="nav">
+  <a id="#nav-dashboard" href="index.html">Dashboard</a>
+  <a id="#nav-packages" href="packages.html">Packages</a>
+  <a id="#nav-bookings" href="bookings.html">Bookings</a>
+  <a id="#nav-customers" href="customers.html">Customers</a>
+  <a id="#nav-analytics" href="analytics.html">Analytics</a>
+  <a id="#nav-messages" href="messages.html">Messages</a>
+  <a id="#nav-settings" href="settings.html">Settings</a>
+</div>
+
+  <script>setActive('#nav-bookings')</script>
+  <div class="searchbar">
+    <select><option>All statuses</option><option>Confirmed</option><option>Pending</option><option>Cancelled</option></select>
+    <input placeholder="Search by customer or package">
+    <button class="btn">Export CSV</button>
+  </div>
+  <table class="table" id="tbl-bookings">
+    <thead><tr><th>Customer</th><th>Package</th><th>Status</th><th>Date</th><th>Amount</th><th>Actions</th></tr></thead>
+    <tbody></tbody>
+  </table>
+</div>
+<script>
+loadData().then(data=>{
+  const tbody = document.querySelector('#tbl-bookings tbody');
+  tbody.innerHTML = data.bookings_recent.map(b=>`
+    <tr>
+      <td>${b.customer}</td><td>${b.package}</td>
+      <td><span class="tag">${b.status}</span></td><td>${b.date}</td><td>$${b.amount}</td>
+      <td class="row-actions"><a href="#">Confirm</a><a href="#" style="color:#ef9b9b">Cancel</a><a href="#">Message</a></td>
+    </tr>`).join('');
+});
+</script>
+</body></html>

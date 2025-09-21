@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Messages — SafarGo Vendors</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+<div class="container">
+  
+<div class="header">
+  <div class="brand"><img src="assets/logo.svg" class="logo" alt="SafarGo Vendors"></div>
+  <div class="top-actions">
+    <button class="icon-btn" title="Notifications">🔔</button>
+    <div class="user">vendor@safargo.app ▾</div>
+  </div>
+</div>
+<div class="nav">
+  <a id="#nav-dashboard" href="index.html">Dashboard</a>
+  <a id="#nav-packages" href="packages.html">Packages</a>
+  <a id="#nav-bookings" href="bookings.html">Bookings</a>
+  <a id="#nav-customers" href="customers.html">Customers</a>
+  <a id="#nav-analytics" href="analytics.html">Analytics</a>
+  <a id="#nav-messages" href="messages.html">Messages</a>
+  <a id="#nav-settings" href="settings.html">Settings</a>
+</div>
+
+  <script>setActive('#nav-messages')</script>
+  <div class="grid">
+    <div class="card">
+      <strong>Inbox</strong>
+      <table class="table" id="tbl-msg">
+        <thead><tr><th>From</th><th>Subject</th><th>Preview</th><th>Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="card">
+      <strong>Quick Reply</strong>
+      <div style="display:flex;gap:8px;flex-direction:column">
+        <input placeholder="To: (email)">
+        <input placeholder="Subject">
+        <textarea rows="6" placeholder="Write your message…"></textarea>
+        <div><button class="btn">Send</button> <button class="btn secondary">Save Draft</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+loadData().then(data=>{
+  const tbody = document.querySelector('#tbl-msg tbody');
+  tbody.innerHTML = data.messages.map(m=>`
+    <tr><td>${m.from}</td><td>${m.subject}</td><td class="muted">${m.snippet}</td>
+    <td class="row-actions"><a href="#">Open</a><a href="#">Reply</a></td></tr>`).join('');
+});
+</script>
+</body></html>

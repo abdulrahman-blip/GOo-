@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Packages — SafarGo Vendors</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+<div class="container">
+  
+<div class="header">
+  <div class="brand"><img src="assets/logo.svg" class="logo" alt="SafarGo Vendors"></div>
+  <div class="top-actions">
+    <button class="icon-btn" title="Notifications">🔔</button>
+    <div class="user">vendor@safargo.app ▾</div>
+  </div>
+</div>
+<div class="nav">
+  <a id="#nav-dashboard" href="index.html">Dashboard</a>
+  <a id="#nav-packages" href="packages.html">Packages</a>
+  <a id="#nav-bookings" href="bookings.html">Bookings</a>
+  <a id="#nav-customers" href="customers.html">Customers</a>
+  <a id="#nav-analytics" href="analytics.html">Analytics</a>
+  <a id="#nav-messages" href="messages.html">Messages</a>
+  <a id="#nav-settings" href="settings.html">Settings</a>
+</div>
+
+  <script>setActive('#nav-packages')</script>
+  <div class="searchbar">
+    <input placeholder="Search packages…"> <select><option>All cities</option><option>Dubai</option><option>Istanbul</option><option>Male</option></select>
+    <button class="btn">Add New Package</button>
+  </div>
+  <table class="table" id="tbl-packages">
+    <thead><tr><th>ID</th><th>Name</th><th>City</th><th>Price</th><th>Status</th><th>Tags</th><th>Actions</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <div class="footer">Tip: Use status toggles to activate/deactivate packages.</div>
+</div>
+<script>
+loadData().then(data=>{
+  const tbody = document.querySelector('#tbl-packages tbody');
+  tbody.innerHTML = data.packages.map(p=>`
+    <tr>
+      <td>${p.id}</td><td>${p.name}</td><td>${p.city}</td><td>$${p.price}</td>
+      <td><label class="switch"><input type="checkbox" ${p.status==='Active'?'checked':''}><span></span></label></td>
+      <td>${p.tags.map(t=>`<span class='tag'>${t}</span>`).join(' ')}</td>
+      <td class="row-actions"><a href="#">Edit</a><a href="#">Duplicate</a><a href="#" style="color:#ef9b9b">Delete</a></td>
+    </tr>`).join('');
+});
+</script>
+</body></html>

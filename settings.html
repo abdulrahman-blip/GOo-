@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings — SafarGo Vendors</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+<div class="container">
+  
+<div class="header">
+  <div class="brand"><img src="assets/logo.svg" class="logo" alt="SafarGo Vendors"></div>
+  <div class="top-actions">
+    <button class="icon-btn" title="Notifications">🔔</button>
+    <div class="user">vendor@safargo.app ▾</div>
+  </div>
+</div>
+<div class="nav">
+  <a id="#nav-dashboard" href="index.html">Dashboard</a>
+  <a id="#nav-packages" href="packages.html">Packages</a>
+  <a id="#nav-bookings" href="bookings.html">Bookings</a>
+  <a id="#nav-customers" href="customers.html">Customers</a>
+  <a id="#nav-analytics" href="analytics.html">Analytics</a>
+  <a id="#nav-messages" href="messages.html">Messages</a>
+  <a id="#nav-settings" href="settings.html">Settings</a>
+</div>
+
+  <script>setActive('#nav-settings')</script>
+  <div class="grid">
+    <div class="card">
+      <strong>Company Profile</strong>
+      <div style="display:flex;gap:8px;flex-direction:column;margin-top:8px">
+        <input placeholder="Company Name" value="Elite Trips LLC">
+        <input placeholder="Contact Email" value="ops@elitetrips.com">
+        <input placeholder="Phone" value="+971-50-222-3344">
+        <button class="btn">Save</button>
+      </div>
+    </div>
+    <div class="card">
+      <strong>Branding</strong>
+      <div style="display:flex;gap:8px;flex-direction:column;margin-top:8px">
+        <input placeholder="Primary Color (hex)" value="#2563eb">
+        <input placeholder="Logo URL">
+        <button class="btn">Update</button>
+      </div>
+    </div>
+    <div class="card">
+      <strong>Billing</strong>
+      <div class="muted">Pilot plan — $0 / mo. Upgrade coming soon.</div>
+      <button class="btn" style="margin-top:8px">Manage Billing</button>
+    </div>
+  </div>
+</div>
+</body></html>
