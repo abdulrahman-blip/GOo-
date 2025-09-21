@@ -1,0 +1,153 @@
+{
+  "kpis": {
+    "bookings": 128,
+    "revenue": 53420,
+    "active_packages": 24,
+    "pending": 9
+  },
+  "bookings_recent": [
+    {
+      "customer": "Omar Ali",
+      "package": "Dubai Family 5D",
+      "status": "Confirmed",
+      "date": "2025-09-12",
+      "amount": 920
+    },
+    {
+      "customer": "Sara N.",
+      "package": "Istanbul City 7D",
+      "status": "Pending",
+      "date": "2025-09-10",
+      "amount": 1340
+    },
+    {
+      "customer": "Hadi R.",
+      "package": "Maldives Luxury 5D",
+      "status": "Cancelled",
+      "date": "2025-09-08",
+      "amount": 2200
+    },
+    {
+      "customer": "Lina K.",
+      "package": "Astana Nature 7D",
+      "status": "Confirmed",
+      "date": "2025-09-06",
+      "amount": 1170
+    }
+  ],
+  "packages": [
+    {
+      "id": "PK-001",
+      "name": "Dubai Family 5D",
+      "city": "Dubai",
+      "price": 650,
+      "status": "Active",
+      "tags": [
+        "family",
+        "beach",
+        "budget"
+      ]
+    },
+    {
+      "id": "PK-002",
+      "name": "Istanbul City 7D",
+      "city": "Istanbul",
+      "price": 1400,
+      "status": "Active",
+      "tags": [
+        "city",
+        "shopping"
+      ]
+    },
+    {
+      "id": "PK-003",
+      "name": "Maldives Luxury 5D",
+      "city": "Male",
+      "price": 2200,
+      "status": "Inactive",
+      "tags": [
+        "luxury",
+        "honeymoon",
+        "beach"
+      ]
+    }
+  ],
+  "customers": [
+    {
+      "name": "Omar Ali",
+      "email": "omar@example.com",
+      "country": "Jordan",
+      "bookings": 2,
+      "lifetime": 1840
+    },
+    {
+      "name": "Sara N.",
+      "email": "sara@example.com",
+      "country": "UAE",
+      "bookings": 1,
+      "lifetime": 1340
+    },
+    {
+      "name": "Lina K.",
+      "email": "lina@example.com",
+      "country": "KSA",
+      "bookings": 3,
+      "lifetime": 3120
+    }
+  ],
+  "messages": [
+    {
+      "from": "Omar Ali",
+      "subject": "Need Child Seat",
+      "snippet": "Could you add a child seat for the transfer?"
+    },
+    {
+      "from": "Hotel Partner",
+      "subject": "Rate Update",
+      "snippet": "We updated weekend rates for October."
+    },
+    {
+      "from": "Sara N.",
+      "subject": "Visa Support",
+      "snippet": "Can you help with Turkey visa docs?"
+    }
+  ],
+  "analytics": {
+    "monthly": [
+      5200,
+      6400,
+      7100,
+      8300,
+      7800,
+      9200,
+      10100,
+      9800,
+      11200,
+      12400,
+      11800,
+      14200
+    ],
+    "destinations": [
+      {
+        "label": "Dubai",
+        "value": 36
+      },
+      {
+        "label": "Istanbul",
+        "value": 28
+      },
+      {
+        "label": "Male",
+        "value": 18
+      },
+      {
+        "label": "Astana",
+        "value": 12
+      },
+      {
+        "label": "Other",
+        "value": 6
+      }
+    ]
+  }
+}
